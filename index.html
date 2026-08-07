@@ -58,7 +58,7 @@
 
   :focus-visible{outline:3px solid var(--green);outline-offset:2px;}
 
-  .wrap{max-width:1180px;margin:0 auto;padding:0 clamp(20px,4vw,48px);}
+  .wrap{max-width:1180px;margin:0 auto;padding-left:clamp(20px,4vw,48px);padding-right:clamp(20px,4vw,48px);}
 
   /* ---------- reveal-on-scroll ---------- */
   .reveal{opacity:0;transform:translateY(22px);transition:opacity var(--dur) ease, transform var(--dur) ease;}
@@ -125,6 +125,7 @@
     .brand-text span{display:none;}
     .brand{gap:8px;}
     .brand-mark{width:34px;height:34px;font-size:.9rem;}
+    .brand-text b{max-width:118px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:inline-block;}
     .nav-cta{padding:9px 13px;font-size:.76rem;}
     .burger{width:38px;height:38px;}
   }
@@ -172,7 +173,7 @@
   .btn.btn-outline-on-green{background:transparent;color:#fff;border-color:#fff;}
   .btn.btn-outline-on-green:hover{background:#fff;color:var(--green-deep);}
 
-  section.section{padding:clamp(56px,8vw,96px) 0;border-top:2px solid var(--line);}
+  section.section{padding-top:clamp(56px,8vw,96px);padding-bottom:clamp(56px,8vw,96px);border-top:2px solid var(--line);}
   .section-head{max-width:64ch;margin-bottom:36px;}
   .section-title{
     font-family:var(--sans);font-weight:900;font-size:clamp(1.7rem,4vw,2.6rem);line-height:1.22;margin:0 0 12px;
@@ -188,7 +189,7 @@
   /* ===================================================================
      HERO
   =================================================================== */
-  .hero{padding:52px 0 20px;}
+  .hero{padding-top:52px;padding-bottom:20px;}
   .hero-grid{display:grid;grid-template-columns:minmax(220px,320px) 1fr;gap:40px;align-items:stretch;}
   .hero-left{display:flex;flex-direction:column;justify-content:space-between;padding:6px 0;}
   .hero-arrow{width:74px;height:74px;color:var(--ink);margin-bottom:26px;}
@@ -302,6 +303,13 @@
     padding:18px 22px;font-size:.9rem;color:var(--ink-soft);margin-top:22px;
   }
   .series-filter b{color:var(--ink);}
+
+  /* ---------- 共同說明 ---------- */
+  .common-note{padding:24px 26px;margin-bottom:24px;}
+  .common-note h3{font-size:1rem;font-weight:900;margin:0 0 14px;color:var(--ink);}
+  .common-note-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;}
+  .common-note-list li{position:relative;padding-left:20px;font-size:.88rem;color:var(--ink-soft);}
+  .common-note-list li::before{content:"";position:absolute;left:2px;top:.6em;width:6px;height:6px;background:var(--green);border-radius:1px;transform:rotate(45deg);}
 
   /* ===================================================================
      四種服務方案
@@ -484,7 +492,7 @@
   /* ===================================================================
      頁尾
   =================================================================== */
-  footer{border-top:2px solid var(--line);padding:clamp(56px,8vw,90px) 0 0;}
+  footer{border-top:2px solid var(--line);padding-top:clamp(56px,8vw,90px);}
   .footer-cta{padding:0 0 clamp(30px,5vw,44px);}
   .footer-title{font-size:clamp(1.4rem,3.4vw,2rem);font-weight:900;margin:0 0 30px;max-width:26ch;color:var(--ink);}
   .footer-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-bottom:32px;}
@@ -579,7 +587,7 @@
       <div class="hero-block reveal">
         <span class="hero-watermark" aria-hidden="true">26</span>
         <div>
-          <span class="hero-headline">陳宜君續選社群影音製作提案</span>
+          <span class="hero-eng">陳宜君續選社群影音製作提案</span>
           <h1 class="hero-headline">把做過的事，轉化成看得懂、記得住、願意分享的故事。</h1>
           <p class="hero-sub">從影音拍攝、內容企劃到社群協作，依競選團隊現有分工，選擇適合的月度合作方式。</p>
         </div>
@@ -664,6 +672,18 @@
       <p class="section-sub">依內部團隊現有能力與需要外部支援的程度，選擇合適的月度合作方式。點選下方方案即可切換內容。</p>
     </div>
 
+    <div class="card common-note reveal">
+      <div class="eyebrow" style="margin-bottom:12px;">Before You Choose</div>
+      <h3>共同說明</h3>
+      <ul class="common-note-list">
+        <li>服務費用皆以月為方案，因製作以短影音為主，而短影音的影響力來自『演算法的複利效應與品牌記憶』，單一影片的流量固然重要，但社群選戰的核心在於透過持續產出，建立選民對議員的長期信任與觸及轉換，建議以月度總體數據作為評估基準。</li>
+        <li>費用建議區間（含稅價），正式報價需再次確認是否含稅、交通住宿、實際上架、廣告投放與素材授權。</li>
+        <li>月費不等於無限制改片或無限制臨時行程；交付數量依素材價值與成片規格配置。</li>
+        <li>政治議題、快速回應與多人審查會增加專案管理成本，不能只以單支影片市場價換算。</li>
+        <li>廣告媒體費、外部演員／場地、空拍許可、動畫、直播平台或特殊設備皆另計。</li>
+      </ul>
+    </div>
+
     <div class="plan-tabs" id="planTabs" role="tablist" aria-label="服務方案切換"></div>
     <div class="card plan-detail reveal" id="planDetail"></div>
   </section>
@@ -697,7 +717,7 @@
   </section>
 
   <!-- =====================================================================
-       建議方
+       建議方案
   ===================================================================== -->
   <section class="section wrap" id="recommend" data-nav-section="plans">
     <div class="recommend-block reveal">
