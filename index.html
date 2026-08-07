@@ -527,6 +527,64 @@
   }
   .back-top.show{opacity:1;pointer-events:auto;transform:translateY(0);}
   .back-top:hover{background:var(--green);}
+
+  /* ===================================================================
+     新增元件（對應 PDF 原文內容，供以下新增區塊使用）
+  =================================================================== */
+  .meta-row{display:flex;flex-wrap:wrap;gap:16px 34px;padding:18px 0;border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);margin-bottom:30px;}
+  .meta-row > div{font-size:.82rem;max-width:260px;}
+  .meta-row .k{display:block;color:var(--ink-faint);font-size:.66rem;letter-spacing:.07em;margin-bottom:3px;text-transform:uppercase;}
+  .meta-row .v{color:var(--ink);font-weight:500;}
+
+  .subhead{display:flex;align-items:baseline;gap:8px;margin:30px 0 12px;}
+  .subhead .n{font-family:var(--block);font-weight:700;color:var(--green);font-size:.9rem;}
+  .subhead h3{font-size:1.02rem;font-weight:900;margin:0;color:var(--ink);}
+
+  .plain-bullets{list-style:none;margin:0 0 18px;padding:0;display:flex;flex-direction:column;gap:10px;}
+  .plain-bullets li{position:relative;padding-left:20px;font-size:.9rem;color:var(--ink-soft);max-width:74ch;}
+  .plain-bullets li::before{content:"";position:absolute;left:2px;top:.6em;width:6px;height:6px;background:var(--green);border-radius:1px;transform:rotate(45deg);}
+  .plain-bullets li b{color:var(--ink);}
+
+  .num-list{list-style:none;margin:0 0 18px;padding:0;counter-reset:n;display:flex;flex-direction:column;gap:12px;}
+  .num-list li{position:relative;padding-left:32px;font-size:.9rem;color:var(--ink-soft);counter-increment:n;max-width:74ch;}
+  .num-list li::before{content:counter(n);position:absolute;left:0;top:0;width:22px;height:22px;border-radius:50%;background:var(--ink);color:#fff;font-size:.72rem;font-weight:800;display:flex;align-items:center;justify-content:center;}
+  .num-list li b{color:var(--ink);}
+
+  .pdf-callout{background:var(--card);border:2px solid var(--line);border-left:6px solid var(--green);border-radius:var(--radius-md);padding:18px 22px;margin:20px 0;}
+  .pdf-callout .tag{display:inline-block;font-size:.72rem;font-weight:900;color:#fff;background:var(--green);padding:4px 12px;border-radius:999px;margin-bottom:10px;letter-spacing:.02em;}
+  .pdf-callout p{margin:0;font-size:.9rem;color:var(--ink-soft);}
+
+  .table-wrap{overflow-x:auto;border-radius:var(--radius-lg);border:2px solid var(--line);box-shadow:var(--shadow);margin:14px 0 26px;}
+  table.data{border-collapse:collapse;width:100%;min-width:560px;background:var(--card);}
+  table.data th{background:var(--ink);color:#fff;font-size:.78rem;font-weight:700;text-align:left;padding:12px 18px;white-space:nowrap;}
+  table.data td{padding:14px 18px;font-size:.86rem;color:var(--ink-soft);border-top:1px solid var(--line-faint);vertical-align:top;}
+  table.data td.rowhead{font-weight:700;color:var(--ink);white-space:nowrap;background:var(--green-tint);}
+  table.data tr:nth-child(even) td:not(.rowhead){background:rgba(19,105,35,.035);}
+
+  .propbar{display:flex;height:14px;border-radius:8px;overflow:hidden;margin:20px 0 18px;box-shadow:inset 0 0 0 2px var(--line);}
+  .propbar span{height:100%;}
+  .propkey{display:flex;flex-wrap:wrap;gap:18px 28px;margin-bottom:26px;font-size:.82rem;color:var(--ink-faint);}
+  .propkey b{color:var(--ink);}
+  .propkey .dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;vertical-align:middle;}
+
+  .pdf-thesis{font-family:var(--sans);font-weight:700;font-size:1.05rem;color:var(--ink);border-left:4px solid var(--green);padding:4px 0 4px 18px;margin:8px 0 26px;max-width:64ch;}
+
+  .quote-row{display:flex;flex-direction:column;gap:10px;margin:14px 0 26px;}
+  .quote-chip{background:var(--card);border:1.5px dashed var(--line);border-radius:var(--radius-md);padding:14px 18px;font-size:.94rem;color:var(--ink-soft);font-weight:500;}
+
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:30px;}
+  @media (max-width:760px){.grid-2{grid-template-columns:1fr;}}
+
+  .roadmap-track{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;margin:26px 0 20px;}
+  .roadmap-track::before{content:"";position:absolute;top:19px;left:6%;right:6%;height:2px;background:var(--line-soft);}
+  .roadmap-item{position:relative;padding:0 12px;text-align:left;}
+  .roadmap-item p{font-size:.86rem;color:var(--ink-soft);margin:0;max-width:24ch;}
+  @media (max-width:820px){
+    .roadmap-track{grid-template-columns:1fr;gap:22px;}
+    .roadmap-track::before{left:19px;right:auto;top:0;bottom:0;width:2px;height:auto;}
+    .roadmap-item{padding-left:44px;}
+    .roadmap-item p{max-width:none;}
+  }
 </style>
 </head>
 <body>
@@ -549,8 +607,9 @@
       <a href="#problems" data-nav="problems">服務定位</a>
       <a href="#series" data-nav="series">內容範例</a>
       <a href="#plans" data-nav="plans">方案比較</a>
-      <a href="#monthly" data-nav="monthly">合作流程</a>
-      <a href="#faq" data-nav="faq">合作須知</a>
+      <a href="#production" data-nav="execution">執行節奏</a>
+      <a href="#kpi" data-nav="kpi">成效追蹤</a>
+      <a href="#review" data-nav="faq">合作須知</a>
     </nav>
     <a class="nav-cta" href="#recommend"><span class="full">查看</span>建議方案</a>
     <button class="burger" id="burgerBtn" aria-label="開啟導覽選單" aria-expanded="false" aria-controls="mobileMenu"><span></span></button>
@@ -559,8 +618,9 @@
     <a href="#problems">服務定位</a>
     <a href="#series">內容範例</a>
     <a href="#plans">方案比較</a>
-    <a href="#monthly">合作流程</a>
-    <a href="#faq">合作須知</a>
+    <a href="#production">執行節奏</a>
+    <a href="#kpi">成效追蹤</a>
+    <a href="#review">合作須知</a>
     <a href="#recommend">查看建議方案</a>
   </nav>
 </header>
@@ -646,6 +706,112 @@
   </section>
 
   <!-- =====================================================================
+       一、企劃執行摘要（PDF 原文）
+  ===================================================================== -->
+  <section class="section wrap" id="summary" data-nav-section="problems">
+    <div class="section-head reveal">
+      <div class="eyebrow">Executive Summary</div>
+      <h2 class="section-title">企劃執行摘要</h2>
+      <p class="section-sub">宜君議員已累積地方服務與信任基礎，很多在地居民也都知道；但年輕一代大多不知道她做了什麼，只覺得她是個親切的現任議員。本影音企劃主要目標：將過去的成果轉化為更具辨識度的社群內容。</p>
+    </div>
+
+    <div class="meta-row reveal">
+      <div><span class="k">合作形式</span><span class="v">2026 年 8 月起，單月簽約、月度成效追蹤與滾動調整</span></div>
+      <div><span class="k">核心範圍</span><span class="v">候選人內容策略、影音企劃拍攝、社群協作、數據評估</span></div>
+      <div><span class="k">提案版本</span><span class="v">Version 1.0｜2026 年 8 月</span></div>
+    </div>
+
+    <div class="subhead"><span class="n">01</span><h3>企劃目標</h3></div>
+    <ol class="num-list">
+      <li>將社群原有的圖文與行程紀錄轉化為人物、故事與議題影音，完整呈現問題、行動與改變。</li>
+      <li>把既有地方信任轉化為可追蹤的社群成效，包括非粉絲觸及、青年受眾留存、分享與人物記憶。</li>
+      <li>在選戰最後數月集中內容主軸，以核心議題建立清楚、可重複傳達的續任理由。</li>
+    </ol>
+
+    <div class="subhead"><span class="n">02</span><h3>人物社群現況分析</h3></div>
+    <p class="section-sub" style="margin-bottom:16px;">社群溝通重點：讓選民清楚理解完成了什麼、產生哪些改變，以及下一任期為何仍需要她。人物定位維持既有的真實與穩定，調整的是社群呈現方式與內容辨識度。</p>
+    <div class="table-wrap"><table class="data" id="tblPersona"></table></div>
+
+    <div class="subhead"><span class="n">03</span><h3>人物定位</h3></div>
+    <p style="max-width:74ch;margin:0 0 14px;font-size:.9rem;color:var(--ink-soft);"><b style="color:var(--ink);">核心定位｜</b>長期陪伴、做事有細節、能把地方問題追到底的現任議員。</p>
+    <ul class="plain-bullets">
+      <li><b>人物關鍵詞：</b>溫暖、直接、細節、可靠、願意聽、持續追蹤。</li>
+      <li><b>主要角色：</b>把民眾遇到的問題帶進縣府、議會與跨單位協調流程。</li>
+      <li><b>青年化方向：</b>以生活語言、真實案例與直接提問降低政治距離，維持自然、可信的表達。</li>
+    </ul>
+
+    <div class="subhead"><span class="n">04</span><h3>社群影音內容風險評估</h3></div>
+    <ul class="plain-bullets">
+      <li>社群畫面若長期集中於剪綵、握手、跑行程與口號，人物差異與工作內容將不易被辨識。</li>
+      <li>議題範圍過廣或每支影片都只列成果，容易分散人物焦點與續任理由。</li>
+      <li>過度追逐流行形式，可能削弱現任者原有的穩定感與可信度。</li>
+    </ul>
+    <div class="pdf-callout">
+      <span class="tag">工作假設</span>
+      <p>首月需取得社群後台、過去一年表現最好／最差貼文、代表服務案例、議會成果與可受訪人物，再把上述診斷轉為數據基準。</p>
+    </div>
+
+    <div class="subhead"><span class="n">05</span><h3>受眾與平台角色分析</h3></div>
+    <p class="section-sub" style="margin-bottom:16px;">同一主題依據不同平台重新安排開場、長度與行動入口，使各平台分別承擔認識、互動並透過不同主要訊號，判斷不同年齡層的社群轉換率。</p>
+    <div class="table-wrap"><table class="data" id="tblAudience"></table></div>
+
+    <div class="subhead"><span class="n">06</span><h3>首月受眾判讀原則</h3></div>
+    <ul class="plain-bullets">
+      <li>首月以青年願意停留、家庭與長輩也容易理解的表達方式，測試教育／兒少、照顧、交通醫療、生活環境與地方工作等題型，再依留存、分享與人物認識成效收斂主力。</li>
+    </ul>
+    <div class="table-wrap"><table class="data" id="tblPlatform"></table></div>
+  </section>
+
+  <!-- =====================================================================
+       二、執行策略架構（PDF 原文）
+  ===================================================================== -->
+  <section class="section wrap" id="strategy" data-nav-section="problems">
+    <div class="section-head reveal">
+      <div class="eyebrow">Strategy Framework</div>
+      <h2 class="section-title">執行策略架構</h2>
+      <p class="section-sub">以「服務轉譯、地方生活、人物關係」三條內容線，建立現任者的社群選擇理由。</p>
+    </div>
+    <p class="pdf-thesis">核心命題：把多年做過的事，轉化成更多人看得懂、記得住、願意分享的故事。</p>
+
+    <div class="propbar">
+      <span style="width:50%;background:var(--green);"></span>
+      <span style="width:30%;background:#5C9B5B;"></span>
+      <span style="width:20%;background:var(--green-tint-2);"></span>
+    </div>
+    <div class="propkey">
+      <span><span class="dot" style="background:var(--green)"></span><b>50%</b> 工作與服務轉譯</span>
+      <span><span class="dot" style="background:#5C9B5B"></span><b>30%</b> 地方生活與核心議題</span>
+      <span><span class="dot" style="background:var(--green-tint-2)"></span><b>20%</b> 人物與關係</span>
+    </div>
+
+    <div class="subhead"><h3>50%｜工作與服務轉譯</h3></div>
+    <p class="section-sub" style="margin-bottom:12px;">每支服務內容交代問題、受影響對象、協調過程、目前進度與實際生活改變。</p>
+    <ul class="plain-bullets">
+      <li>用 3–5 個代表案例建立系列。</li>
+      <li>每個案例都標示議員職權與下一個追蹤點。</li>
+    </ul>
+
+    <div class="subhead"><h3>30%｜地方生活與核心議題</h3></div>
+    <p class="section-sub" style="margin-bottom:12px;">選戰後期聚焦少數核心議題，以生活現場與具體案例建立清楚記憶。</p>
+    <ul class="plain-bullets">
+      <li>教育兒少、家庭照顧可作核心優勢。</li>
+      <li>交通醫療、生活環境與青年地方工作依數據加減。</li>
+    </ul>
+
+    <div class="subhead"><h3>20%｜人物與關係</h3></div>
+    <p class="section-sub" style="margin-bottom:12px;">人物內容可呈現說話方式、情緒、幽默、挫折與地方記憶，並連結到議員處理工作的方式。</p>
+    <ul class="plain-bullets">
+      <li>人物生活感用於補強信任與理解，並與公共工作保持連結。</li>
+      <li>青年提問與跟拍工作現場優先。</li>
+    </ul>
+
+    <div class="pdf-callout">
+      <span class="tag">策略判斷</span>
+      <p>每月建議設定 1 個人物任務、1–2 個議題任務與 1 個行動任務；其餘題目排入素材庫或下月，以維持訊息集中。</p>
+    </div>
+  </section>
+
+  <!-- =====================================================================
        三、影音內容設計範例（一）
   ===================================================================== -->
   <section class="section wrap" id="series" data-nav-section="series">
@@ -663,6 +829,34 @@
   </section>
 
   <!-- =====================================================================
+       五、人物語言與畫面原則（PDF 原文）
+  ===================================================================== -->
+  <section class="section wrap" id="voice" data-nav-section="series">
+    <div class="section-head reveal">
+      <div class="eyebrow">Voice &amp; Visual</div>
+      <h2 class="section-title">人物語言與畫面原則</h2>
+      <p class="section-sub">非典型政治影音的重點，是讓觀眾看見候選人如何傾聽、判斷與採取行動。</p>
+    </div>
+
+    <div class="subhead"><h3>每支影片的四段敘事</h3></div>
+    <ol class="num-list">
+      <li><b>生活現場：</b>先讓觀眾看見問題發生在哪裡、影響誰。</li>
+      <li><b>候選人反應：</b>呈現提問、傾聽、判斷或取捨，不只給結論。</li>
+      <li><b>角色作法：</b>清楚說明議員或鎮長能做什麼、不能做什麼。</li>
+      <li><b>後續承諾：</b>提供追蹤節點、下一步或觀眾可參與的行動。</li>
+    </ol>
+
+    <div class="subhead"><h3>短影音開場測試</h3></div>
+    <div class="quote-row">
+      <div class="quote-chip">「這件事不是會勘完就結束，我們追到第三個月了。」</div>
+      <div class="quote-chip">「很多人不知道，這件事議員能做的是哪一段。」</div>
+      <div class="quote-chip">「如果你家裡也遇過這個問題，先看懂卡在哪裡。」</div>
+    </div>
+
+    <div class="table-wrap"><table class="data" id="tblVoice"></table></div>
+  </section>
+
+  <!-- =====================================================================
        四種服務方案
   ===================================================================== -->
   <section class="section wrap" id="plans" data-nav-section="plans">
@@ -677,7 +871,7 @@
       <h3>共同說明</h3>
       <ul class="common-note-list">
         <li>服務費用皆以月為方案，因製作以短影音為主，而短影音的影響力來自『演算法的複利效應與品牌記憶』，單一影片的流量固然重要，但社群選戰的核心在於透過持續產出，建立選民對議員的長期信任與觸及轉換，建議以月度總體數據作為評估基準。</li>
-        <li>費用建議區間（含稅價），正式報價需再次確認是否含稅、交通住宿、實際上架、廣告投放與素材授權。</li>
+        <li>以上為費用建議區間（含稅價），正式報價需再次確認是否含稅、交通住宿、實際上架、廣告投放與素材授權。</li>
         <li>月費不等於無限制改片或無限制臨時行程；交付數量依素材價值與成片規格配置。</li>
         <li>政治議題、快速回應與多人審查會增加專案管理成本，不能只以單支影片市場價換算。</li>
         <li>廣告媒體費、外部演員／場地、空拍許可、動畫、直播平台或特殊設備皆另計。</li>
@@ -733,9 +927,165 @@
   </section>
 
   <!-- =====================================================================
+       七、月度內容與拍攝配置建議（PDF 原文）
+  ===================================================================== -->
+  <section class="section wrap" id="production" data-nav-section="execution">
+    <div class="section-head reveal">
+      <div class="eyebrow">Production Plan</div>
+      <h2 class="section-title">月度內容與拍攝配置建議</h2>
+      <p class="section-sub">企劃內容、常態行程與特殊專案分流管理，為人物系列與議題內容保留固定製作量能。</p>
+    </div>
+    <div class="subhead"><h3>內容產出建議</h3></div>
+    <ul class="plain-bullets">
+      <li>短影音約 8–12 支：依當月目標、受眾任務與素材完整度配置人物、議題、活動及即時內容。</li>
+      <li>中篇人物／議題片 0–1 支：在當月主題與素材足以支撐完整敘事時製作。</li>
+      <li>每支影片提供標題、封面文字與平台版本建議；是否實際上架依選定方案界定。</li>
+      <li>同一主題可拆分為主片、短切、Threads 延伸與限時動態素材；各版本共享同一策略目標，分別記錄平台成效。</li>
+    </ul>
+    <div class="table-wrap"><table class="data" id="tblProdConfig"></table></div>
+    <div class="subhead"><h3>常態行程三級判斷</h3></div>
+    <div class="table-wrap"><table class="data" id="tblGrade"></table></div>
+  </section>
+
+  <!-- =====================================================================
+       八、2026 年 8–11 月路線圖（PDF 原文）
+  ===================================================================== -->
+  <section class="section wrap" id="roadmap" data-nav-section="execution">
+    <div class="section-head reveal">
+      <div class="eyebrow">Aug – Nov Roadmap</div>
+      <h2 class="section-title">2026 年 8–11 月路線圖</h2>
+      <p class="section-sub">內容由人物認識與好感，逐步推進至能力證明與續任理由；每月依數據、地方反應與選情調整配置。</p>
+    </div>
+    <div class="subhead"><h3>分月決策原則</h3></div>
+    <ul class="plain-bullets">
+      <li>8 月建立影片與受眾基準，並確認最適合優先溝通的任期成果。</li>
+      <li>9 月集中製作表現最佳的 2–3 個題型；僅獲既有支持者互動的形式，先調整開場、片長或敘事方式再測。</li>
+      <li>10 月將每項成果連結至下一任期的具體工作與可檢驗進度。</li>
+      <li>11 月以既有高成效系列為主，集中傳達續任理由、投票資訊與線下行動入口。</li>
+    </ul>
+    <div class="pdf-callout">
+      <span class="tag">投票節點</span>
+      <p>115 年地方公職人員選舉投票日為 2026 年 11 月 28 日。11 月內容須預留投票前資訊校正、素材備援與高風險審查時間。</p>
+    </div>
+    <div class="roadmap-track" id="roadmapTrack"></div>
+    <div class="table-wrap"><table class="data" id="tblRoadmap"></table></div>
+  </section>
+
+  <!-- =====================================================================
+       九、首月執行內容｜2026 年 8 月（PDF 原文）
+  ===================================================================== -->
+  <section class="section wrap" id="firstmonth" data-nav-section="execution">
+    <div class="section-head reveal">
+      <div class="eyebrow">First Month｜2026.08</div>
+      <h2 class="section-title">首月執行內容｜2026 年 8 月</h2>
+      <p class="section-sub">人物定位與內容基準建立月：同步完成內容產出、受眾測試與後台基準建立。</p>
+    </div>
+    <div class="subhead"><h3>首月必做盤點</h3></div>
+    <ul class="plain-bullets">
+      <li>過去 90 天平台後台、粉絲年齡／所在地、自然與付費觸及、影片留存與追蹤變化。</li>
+      <li>3–5 個服務案例、3 個議會監督／質詢成果、2 個跨單位協調、1–2 個未完成工作。</li>
+      <li>可受訪民眾、兒少與家庭案例的同意與個資風險；候選人可拍時間與敏感議題。</li>
+    </ul>
+    <div class="subhead"><h3>首月建議產出</h3></div>
+    <ul class="plain-bullets">
+      <li>2 支人物測試片：工作方式／青年直接提問。</li>
+      <li>2 支服務或地方議題片：至少 1 支完整交代問題—協調—進度。</li>
+      <li>2–4 支日常／行程內容：依 A／B／C 分級轉化，不做流水帳。</li>
+      <li>1 份月底報告：含內容數據、質性留言、人物印象與 9 月配置。</li>
+    </ul>
+    <div class="pdf-callout">
+      <span class="tag">首月承諾</span>
+      <p>首月交付重點為建立可比較的內容基準、人物印象資料與下月執行決策；單支流量與得票影響另依投放、事件與線下回饋判讀。</p>
+    </div>
+    <div class="table-wrap"><table class="data" id="tblWeeks"></table></div>
+  </section>
+
+  <!-- =====================================================================
+       十、發布節奏與社群協作（PDF 原文）
+  ===================================================================== -->
+  <section class="section wrap" id="publish" data-nav-section="execution">
+    <div class="section-head reveal">
+      <div class="eyebrow">Publishing Rhythm</div>
+      <h2 class="section-title">發布節奏與社群協作</h2>
+      <p class="section-sub">每次發布都對應一項內容假設，並以固定時間窗檢視觸及、留存、互動與轉換。</p>
+    </div>
+    <div class="subhead"><h3>一題多用，但不重複貼文</h3></div>
+    <ol class="num-list">
+      <li><b>主片：</b>保留完整人物或議題弧線，作為 Facebook／YouTube 內容核心。</li>
+      <li><b>短切：</b>針對 Reels／Shorts 測試不同開場、長度或一句話記憶點。</li>
+      <li><b>文字：</b>在 Threads 補充未剪進影片的觀察、疑問與回覆。</li>
+      <li><b>留言：</b>把高價值問題整理成下一支回應片或走訪題目。</li>
+    </ol>
+    <div class="subhead"><h3>發布前檢查</h3></div>
+    <ul class="plain-bullets">
+      <li>第一句是否讓不認識候選人的人也願意停留？</li>
+      <li>封面是否寫出生活問題，而非只寫活動名稱？</li>
+      <li>是否清楚區分事實、立場、承諾與尚待追蹤事項？</li>
+      <li>是否取得人物與場域同意，並移除個資、兒少與服務案件敏感資訊？</li>
+      <li>是否準備留言回覆原則、負面訊號與後續轉換入口？</li>
+    </ul>
+    <div class="table-wrap"><table class="data" id="tblPublish"></table></div>
+  </section>
+
+  <!-- =====================================================================
+       十一、數據 KPI 與成效評估（PDF 原文）
+  ===================================================================== -->
+  <section class="section wrap" id="kpi" data-nav-section="kpi">
+    <div class="section-head reveal">
+      <div class="eyebrow">KPI &amp; Evaluation</div>
+      <h2 class="section-title">數據 KPI 與成效評估</h2>
+      <p class="section-sub">成效評估以過去 90 天同平台、同格式內容的中位數為基準；首月採暫定目標，取得完整後台資料後於月初會議確認。</p>
+    </div>
+    <div class="subhead"><h3>首月基準方法</h3></div>
+    <ol class="num-list">
+      <li>匯出過去 90 天資料；每平台、同格式至少 5 則，不足則全數納入並標註樣本數。自然與付費分開計算中位數。</li>
+      <li>每支影片發布前建立測試卡：內容假設、受眾、平台、片長、自然／付費、目標值與發布後 7 天實績。</li>
+      <li>採發布後 7 天固定時間窗，以同平台、同片長、同類型中位數判讀；異常高值另列事件說明。</li>
+      <li>每月編碼至少 50 則有效留言，不足則全數納入；標記人物印象、議題、疑慮與行動意願。</li>
+    </ol>
+    <div class="table-wrap"><table class="data" id="tblKpi"></table></div>
+  </section>
+
+  <!-- =====================================================================
+       十二、月度對焦與成效決策（PDF 原文）
+  ===================================================================== -->
+  <section class="section wrap" id="focus" data-nav-section="kpi">
+    <div class="section-head reveal">
+      <div class="eyebrow">Monthly Review</div>
+      <h2 class="section-title">月度對焦與成效決策</h2>
+      <p class="section-sub">每月底報告固定呈現基準值、目標值、實績、差異與原因，並提出下月續作、放大、調整或暫停的具體建議。</p>
+    </div>
+    <div class="grid-2">
+      <div>
+        <div class="subhead"><h3>政治與人物</h3></div>
+        <ul class="plain-bullets">
+          <li>這個月最需要解決的選民疑問是什麼？目前是增加認識、建立好感，還是證明能力？</li>
+          <li>哪一項人物印象需要加強？哪一項既有印象需要降低？</li>
+        </ul>
+      </div>
+      <div>
+        <div class="subhead"><h3>地方與內容</h3></div>
+        <ul class="plain-bullets">
+          <li>最近埔里人在談什麼？哪一個問題只有埔里人會懂？</li>
+          <li>有沒有值得長期追蹤的人物或案例？哪些內容能同時讓長輩與青年產生感受？</li>
+        </ul>
+      </div>
+    </div>
+    <div class="subhead"><h3>社群與執行</h3></div>
+    <ul class="plain-bullets">
+      <li>依非粉絲觸及占比、3 秒觀看率、50% 觀看率、分享率與高價值互動率排序內容表現，並標註受眾是否集中於既有支持者。</li>
+      <li>達到目標或達成度 80% 以上的系列列入續作；低於 80% 者先調整開場、片長或題型再測，連續兩次仍未改善時暫停。</li>
+    </ul>
+    <div class="pdf-callout">
+      <span class="tag">月底輸出</span>
+      <p>一頁決策摘要＋內容成效表＋人物印象變化＋下月建議配置。每項指標列出基準、目標、實績、差異與樣本數；自然與付費流量分開，並註記外部事件、聯名曝光或爭議造成的異常值。</p>
+    </div>
+  </section>
+
+  <!-- =====================================================================
        每月如何合作
   ===================================================================== -->
-  <section class="section wrap" id="monthly" data-nav-section="monthly">
+  <section class="section wrap" id="monthly" data-nav-section="execution">
     <div class="section-head reveal">
       <div class="eyebrow">Monthly Rhythm</div>
       <h2 class="section-title">每月如何合作</h2>
@@ -754,7 +1104,7 @@
   <!-- =====================================================================
        影片審查與修改流程
   ===================================================================== -->
-  <section class="section wrap" id="review" data-nav-section="monthly">
+  <section class="section wrap" id="review" data-nav-section="faq">
     <div class="section-head reveal">
       <div class="eyebrow">Review Flow</div>
       <h2 class="section-title">影片審查與修改流程</h2>
@@ -764,12 +1114,13 @@
       <ol class="review-steps reveal" id="reviewSteps"></ol>
       <div class="review-side reveal" id="reviewSide"></div>
     </div>
+    <div class="table-wrap"><table class="data" id="tblRoles"></table></div>
   </section>
 
   <!-- =====================================================================
        合作啟動前準備（checklist）
   ===================================================================== -->
-  <section class="section wrap" id="checklist" data-nav-section="monthly">
+  <section class="section wrap" id="checklist" data-nav-section="faq">
     <div class="section-head reveal">
       <div class="eyebrow">Get Started</div>
       <h2 class="section-title">合作啟動前準備</h2>
@@ -779,6 +1130,15 @@
     <div class="card reveal" style="padding:clamp(22px,4vw,32px);">
       <div class="checklist-grid" id="checklistGrid"></div>
     </div>
+
+    <div class="subhead"><h3>確認合作後的第一個決策（PDF 原文）</h3></div>
+    <ol class="num-list">
+      <li>確認採用方案後，依據影像團隊提供之需求表，由選務團隊填寫後，提供實際費用及報價單。</li>
+      <li>指定候選人、決策代表、政策審查者與內容單一窗口。</li>
+      <li>安排人物深訪、帳號權限／數據匯出與第一個月最多 3 個基礎企劃拍攝日。</li>
+      <li>鎖定 5–8 場常態行程候選清單，再依 A／B／C 價值分級。</li>
+      <li>確認特殊專案、廣告協作與快速回應是否另列預算。</li>
+    </ol>
   </section>
 
   <!-- =====================================================================
@@ -844,6 +1204,110 @@
   var ICON_YES = '<svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8"/><path d="M8 12.5l2.5 2.5L16 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
   var ICON_NO  = '<svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8"/><path d="M9 9l6 6M15 9l-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
   var ICON_CHEV = '<svg class="chev" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
+  /* =====================================================================
+     通用資料表渲染（對應 PDF 原文新增的表格）
+  ===================================================================== */
+  function renderPdfTable(id, headers, rows){
+    var thead = '<thead><tr>' + headers.map(function(h){ return '<th>' + h + '</th>'; }).join('') + '</tr></thead>';
+    var tbody = '<tbody>' + rows.map(function(r){
+      return '<tr>' + r.map(function(c, i){ return '<td' + (i===0 ? ' class="rowhead"' : '') + '>' + c + '</td>'; }).join('') + '</tr>';
+    }).join('') + '</tbody>';
+    var el = document.getElementById(id);
+    if(el) el.innerHTML = thead + tbody;
+  }
+
+  renderPdfTable('tblPersona', ['面向','策略假設','首月驗證'], [
+    ['知名度','地方長期深耕、既有支持者熟悉，但網路擴散效益有限。','非粉絲、18–44 歲占比與 90 日基準差異'],
+    ['親和力','願意分享、與民眾互動自然，具有良好的親和力。','分享率、正面留言率與高價值互動率最高的 2 種場景'],
+    ['能力','服務態度與能力在地方獲認可。','3–5 個案例中，至少 2 支分享率較基準提升 20%'],
+    ['選擇理由','現任優勢存在，但社群內容未形成清楚記憶點。','針對線上非粉絲或線下青年進行調查回饋：能否無提示說出 1 項續任理由']
+  ]);
+
+  renderPdfTable('tblAudience', ['受眾','內容需求','主要訊號'], [
+    ['18–34 歲青年','先看見真實個性，再理解議員工作與地方議題','非粉絲觸及、分享、追蹤與人物印象'],
+    ['35–54 歲家庭','教育、交通、照顧、生活環境與服務案例','完整觀看、私訊、標註親友與案例回應'],
+    ['55 歲以上在地選民','清楚、慢一點、案例具體、職權說明','分享至家庭群組、留言與線下回饋'],
+    ['既有支持者','提供可轉傳的成果與選擇理由','分享率、主動辯護、活動與志工轉換']
+  ]);
+
+  renderPdfTable('tblPlatform', ['平台','主要角色','建議形式'], [
+    ['Facebook','在地擴散、家庭與中高齡溝通','60–120 秒短影音、2–4 分鐘完整故事、活動重點'],
+    ['Instagram Reels','人物好感、非粉絲觸及、青年視覺記憶','20–60 秒直式短影音、強開場、人物互動'],
+    ['Threads','第一人稱觀察、議題對話、即時回應','走訪筆記、提問、短觀點、留言延伸'],
+    ['YouTube Shorts','跨平台累積與搜尋後續效益','直式精華、系列化標題、可追看主題']
+  ]);
+
+  renderPdfTable('tblVoice', ['要素','建議做法','風險表現'], [
+    ['語氣','溫暖、直接、細節型；先說人與問題','公文式表達、口號過多或情緒渲染超過事實內容'],
+    ['鏡頭','互動、走動、會勘與追蹤中的自然狀態','長時間定點背稿，缺少候選人與現場的互動'],
+    ['民眾','是故事主體，有自己的需求與聲音','民眾僅作為候選人的背景，缺少自身需求與完整說法'],
+    ['成果','交代前後差異、角色與未完成處','只列預算與件數，未說明前後差異、角色與後續進度'],
+    ['青年化','直球提問、節奏清楚、資訊可分享','過度套用流行形式，使人物語氣與既有信任感不一致']
+  ]);
+
+  renderPdfTable('tblProdConfig', ['內容類型','月度配置','主要用途','管理原則'], [
+    ['基礎企劃','拍攝最多 3 天','人物系列、地方議題、治理說明','由月初策略會議排定，不被臨時行程任意替換'],
+    ['常態行程','每月 5–8 場上限','會勘、拜訪、服務、地方活動','分為成片、快剪、素材留存三級'],
+    ['特殊專案','依排定場次另報價','造勢、記者會、政策發布、直播','另定人力、機位、交期，不占基礎額度']
+  ]);
+
+  renderPdfTable('tblGrade', ['等級','判斷','交付'], [
+    ['A｜值得成片','有明確人物、衝突、解法或候選人角色','30–90 秒短影音或完整故事'],
+    ['B｜即時快訊','事件重要但故事性有限','15–30 秒短剪、照片＋文字或限動'],
+    ['C｜素材留存','例行出席、內容高度重複','建立素材庫，不保證單獨成片']
+  ]);
+
+  renderPdfTable('tblRoadmap', ['月份','政治任務','人物任務','內容主力','月底判斷'], [
+    ['8 月','社群形象重新介紹','讓人看見工作方式與真實性格','人物基準片、服務案例、青年問答','哪種敘事能跨出既有支持者'],
+    ['9 月','放大地方服務與青年對話','從親切進入可理解的能力','案件追蹤、家庭議題、地方工作者','核心議題應集中哪 2–3 類'],
+    ['10 月','任期成果與未完成工作','建立再做四年的具體理由','成果證據、議題立場、未完進度','能力與選擇理由是否被說出'],
+    ['11 月','信任收斂與行動轉換','穩定支持、降低最後疑慮','地方關係、總結、投票資訊、動員','哪些受眾仍未被觸及']
+  ]);
+
+  renderPdfTable('tblWeeks', ['週次','工作','主要交付','決策點'], [
+    ['第 1 週','人物深訪、後台健檢、成果與素材盤點','診斷摘要、基準表、案例候選清單','確認 3 個主題與拍攝日'],
+    ['第 2 週','企劃拍攝日 1–2、常態行程分級','人物測試片、服務案例片、素材庫','確認最自然的鏡頭形式'],
+    ['第 3 週','發布測試、企劃拍攝日 3 或追蹤拍攝','青年問答、議題片、平台版本','依 3 秒與分享率調整開場'],
+    ['第 4 週','持續發布、留言判讀、月底會議','成效報告、人物印象表、9 月建議','續約與下月系列取捨']
+  ]);
+
+  renderPdfTable('tblPublish', ['內容角色','建議節奏','發布目的'], [
+    ['主系列','每週 1–2 支','建立穩定人物記憶與追看習慣'],
+    ['地方／議題片','每週 1 支或依事件','跨出既有支持者、建立角色能力'],
+    ['常態行程','依 A/B/C 分級','維持在地存在感，不淹沒主系列'],
+    ['Threads','每週 3–5 則，視方案','補足第一人稱觀察、互動與影片後續'],
+    ['月末回顧','每月 1 次','整理進度、回應留言、引導下一月主題']
+  ]);
+
+  renderPdfTable('tblKpi', ['層級','核心指標','判讀方式'], [
+    ['觸及','非粉絲觸及占比、18–44 歲占比；自然／付費分開','暫定目標：非粉絲占比＋10 個百分點；18–44 歲占比＋5 個百分點'],
+    ['留存','3 秒、50% 與完整觀看率；依 20–30／31–60／61–120 秒分組','暫定目標：3 秒率＋15%、50% 觀看率＋10%；至少 2 支達標'],
+    ['好感','分享率、收藏率、具體正面留言率、主動標註率','暫定目標：分享率＋20%；每支主系列至少 5 則具體回應'],
+    ['轉換','頁面造訪率、追蹤轉換率、私訊與活動／LINE 入口','暫定目標：追蹤轉換率 5%；高價值互動率 0.5%'],
+    ['人物印象','每月 50 則有效留言＋30 份簡短回饋','疑慮印象較前月＋5 個百分點，即列入修正']
+  ]);
+
+  renderPdfTable('tblRoles', ['角色','主要責任','流程風險'], [
+    ['候選人','確認人物語氣、政治方向與最終立場','過度逐字調整，導致核心訊息與交件時程失焦'],
+    ['競選決策代表','確認選戰節奏、重要時程與風險','多位成員分別提供不同指令，造成版本與決策不一致'],
+    ['政策／事實審查者','確認數字、法規、職權與敏感表述','核心數字或政策資料於粗剪後才補充，增加重剪風險'],
+    ['內容單一窗口','彙整所有意見，一次回覆影音團隊','直接轉傳未彙整的群組訊息，造成意見重複或互相衝突'],
+    ['影音團隊','提出企劃、執行、版本管理與風險提醒','影音團隊取代候選人或決策代表做最終政治判斷']
+  ]);
+
+  var ROADMAP = [
+    {w:"8 月", t:"社群形象重新介紹"},
+    {w:"9 月", t:"放大地方服務與青年對話"},
+    {w:"10 月", t:"任期成果與未完成工作"},
+    {w:"11 月", t:"信任收斂與行動轉換"}
+  ];
+  var roadmapTrackEl = document.getElementById("roadmapTrack");
+  if(roadmapTrackEl){
+    roadmapTrackEl.innerHTML = ROADMAP.map(function(r){
+      return '<div class="roadmap-item reveal"><span class="week-badge">' + r.w + '</span><p>' + r.t + '</p></div>';
+    }).join("");
+  }
 
   var PLANS = [
     {
